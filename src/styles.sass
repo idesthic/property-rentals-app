@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,900;1,400;1,600;1,900&display=swap')
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;1,100;1,300;1,400&display=swap')
+
+@tailwind base
+@tailwind components
+@tailwind utilities
+
+// Variables
+$white: #F1F1F1
+$grey: #C7C7C7
+$dark-grey: #6B6B6B
+$black: #1f1f1f
+$red: #d9252b
+$link-blue: #1f4acc
+$favourite-pink: #eb3477
+
+// Mixins
+
+// Fonts
+@mixin playfairRegularFont
+  font-family: 'Playfair Display', serif
+  font-weight: 400
+
+@mixin playfairRegularItalicFont
+  font-family: 'Playfair Display', serif
+  font-weight: 400
+  font-style: italic
+
+@mixin playfairSemiBoldFont
+  font-family: 'Playfair Display', serif
+  font-weight: 600
+
+@mixin playfairSemiBoldItalicFont
+  font-family: 'Playfair Display', serif
+  font-weight: 600
+  font-style: italic
+
+@mixin playfairBoldFont
+  font-family: 'Playfair Display', serif
+  font-weight: 900
+
+@mixin playfairBoldItalicFont
+  font-family: 'Playfair Display', serif
+  font-weight: 900
+  font-style: italic
+
+@mixin latoThinFont
+  font-family: 'Lato', sans-serif
+  font-weight: 100
+
+@mixin latoThinItalicFont
+  font-family: 'Lato', sans-serif
+  font-weight: 100
+  font-style: italic
+
+@mixin latoLightFont
+  font-family: 'Lato', sans-serif
+  font-weight: 300
+
+@mixin latoLightItalicFont
+  font-family: 'Lato', sans-serif
+  font-weight: 400
+  font-style: italic
+
+@mixin latoRegularFont
+  font-family: 'Lato', sans-serif
+  font-weight: 400
+
+@mixin latoRegularItalicFont
+  font-family: 'Lato', sans-serif
+  font-weight: 400
+  font-style: italic
+
+html, body
+  margin: 0
+
+// Navbar & footer
+.navbar-wrapper, .footer-wrapper
+  position: fixed
+  z-index: 2
+
+// Navbar
+.navbar-wrapper
+  left: 0
+  height: 100%
+  width: 18%
+  @media (min-width: 600px)
+    width: 10%
+
+// Social
+.social-wrapper
+  display: none
+  top: 0
+  right: 0
+  width: 8%
+  height: 90%
+  position: fixed
+  z-index: 2
+  @media (min-width: 600px)
+    display: flex
+    align-items: center
+    justify-content: center
+
+// Footer
+.footer-wrapper
+  bottom: 0
+  width: 100%

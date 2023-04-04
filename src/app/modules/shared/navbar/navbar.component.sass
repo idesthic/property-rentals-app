@@ -1,0 +1,76 @@
+@import "../../../../styles"
+
+.navbar-wrapper
+  width: 20%
+  height: 100%
+  position: fixed
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+  padding-top: 1rem
+  padding-bottom: 2rem
+  @media (min-width: 600px)
+    width: 10%
+    padding-bottom: 1rem
+  .user-navbar
+    display: flex
+    flex-direction: column
+    justify-content: center
+    .navbar-logo
+      display: flex
+      justify-content: center
+      margin-bottom: 2rem
+      img
+        max-width: 80px
+        @media (min-width: 900px)
+          max-width: 100px
+  .navbar-bottom
+    align-items: flex-end
+  .navbar-items
+    display: flex
+    justify-content: center
+    .active
+      color: #6c6c6c
+    ul
+      margin-bottom: 3rem
+      padding-left: 0.1rem
+      padding-right: 0.6rem
+      list-style-type: none
+      @media (min-width: 600px)
+        padding-left: 1.3rem
+        padding-right: 1.3rem
+      li
+        width: 35px
+        padding: 1rem 0
+        display: flex
+        justify-content: center
+        &:hover
+          cursor: pointer
+      .profile-image
+        border: 2px solid $grey
+        display: inline-block
+        width: 35px
+        height: 35px
+        border-radius: 50%
+        background-repeat: no-repeat
+        background-position: center center
+        background-size: cover
+
+    // Dark & light nav
+    .dark-nav
+      border-right: 1px solid #919191
+      li
+        color: #919191
+        &:hover
+         color: $black
+      .profile-image:hover
+        border: 2px solid $black
+
+    .light-nav
+      border-right: 1px solid $grey
+      li
+        color: $grey
+        &:hover
+          color: $dark-grey
+      .profile-image:hover
+        border: 2px solid $dark-grey

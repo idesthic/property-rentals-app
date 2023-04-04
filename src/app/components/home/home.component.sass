@@ -1,0 +1,91 @@
+@import "../../../styles"
+
+@keyframes typewriter
+  from
+    width: 0
+  to
+    width: 100%
+
+@keyframes blinkCursor
+  from
+    border-color: transparent
+  to
+    border-color: grey
+
+.hero-wrapper
+  width: 100%
+  height: 100%
+  background: url("../../../assets/images/background-images/index-background.jpg") no-repeat
+  background-size: cover
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+  position: relative
+  z-index: 0
+  .gradient-background
+    width: 100%
+    height: 100%
+    background: rgb(255,255,255)
+    background: linear-gradient(58deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 63%, rgba(104,162,205,1) 100%)
+    position: absolute
+    z-index: 1
+  .hero-cta-wrapper
+    display: flex
+    flex-direction: column
+    align-items: flex-end
+    padding: 0 2rem
+    margin-top: -2rem
+    position: relative
+    z-index: 2
+    @media (min-width: 414px)
+      margin-top: -12rem
+    h2, h3
+      color: $white
+      margin: 0.5rem 0
+      text-align: right
+    h2
+      @include latoThinFont
+      font-size: 2em
+      line-height: 1.3
+      @media (min-width: 700px)
+        font-size: 3em
+    h3
+      font-size: 1em
+      @include latoThinFont
+      @media (min-width: 700px)
+        font-size: 1.5em
+    .typewriter
+      overflow: hidden
+      border-right: .04em solid #edeef0
+      white-space: nowrap
+      letter-spacing: .10em
+      animation: typewriter 10s steps(50, end) 0.5s 1 normal both running, blinkCursor 1s steps(50) infinite
+      @media (min-width: 700px)
+        letter-spacing: .05em
+    .start-here-btn
+      margin-top: 1rem
+      border: 1px solid white
+      @include latoThinFont
+      color: white
+      padding: 0.5rem 1rem
+      &:hover
+        border: 1px solid $grey
+        color: $grey
+
+  .logo-heading
+    margin-left: 20%
+    padding: 3rem 0
+    display: flex
+    align-items: center
+    margin-bottom: 1rem
+    @media (min-width: 600px)
+      margin-left: 13%
+    img
+      width: 130px
+      height: 110px
+    h1
+      @include playfairRegularFont
+      color: $white
+      font-size: 2em
+
+

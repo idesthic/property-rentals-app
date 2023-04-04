@@ -1,0 +1,30 @@
+<div class="wrapper navbar-wrapper">
+  <div class="user-navbar">
+    <div class="navbar-logo">
+      <a [routerLink]="['/']"><img src="../../../../assets/images/logo/{{ navbarColor === 'light' ? 'logo-light' : 'logo-dark' }}.png" alt="logo image"></a>
+    </div>
+    <div *ngIf="userSignedIn && (navbarColor !== 'light')" class="navbar-top navbar-items">
+      <ul [class]="navbarColor === 'light' ? 'light-nav' : 'dark-nav'">
+        <li><a [routerLink]="['/profile/properties']" [routerLinkActive]="['active']"><mat-icon>maps_home_work</mat-icon></a></li>
+        <li><a [routerLink]="['/profile/favourites']" [routerLinkActive]="['active']"><mat-icon>favorite_border</mat-icon></a></li>
+        <li><button><mat-icon>logout</mat-icon></button></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="navbar-bottom navbar-items">
+    <ul [class]="navbarColor === 'light' ? 'light-nav' : 'dark-nav'">
+
+      <li *ngIf="userSignedIn">
+        <a [routerLink]="['/profile/settings']">
+         <span class="profile-image" style="background-image:url('../../../../assets/images/profile-images/profile-image.png')"></span>
+        </a>
+      </li>
+
+      <li *ngIf="!userSignedIn"><a [routerLink]="['/sign-in']" [routerLinkActive]="['active']"><mat-icon>person</mat-icon></a></li>
+
+      <li><a [routerLink]="['/search']" [routerLinkActive]="['active']"><mat-icon>search</mat-icon></a></li>
+      <li><a [routerLink]="['/']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }"><mat-icon>home</mat-icon></a></li>
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,174 @@
+<div class="wrapper user-properties-wrapper">
+  <div class="background"></div>
+
+  <div class="navbar-wrapper">
+    <app-navbar></app-navbar>
+  </div>
+
+  <div class="user-properties-container">
+    <div *ngIf="userSignedIn && !favourites" class="add-property-btn-wrapper">
+      <button (click)="openModal(addEditPropertyModal, 'add')">Add property</button>
+    </div>
+
+    <div class="property-cards-wrapper">
+      <div class="card">
+        <h1 *ngIf="!favourites"><mat-icon>maps_home_work</mat-icon>&nbsp;&nbsp;Your properties</h1>
+        <h1 *ngIf="favourites"><mat-icon>favorite</mat-icon>&nbsp;&nbsp; Your favourites</h1>
+        <app-property-card [propertyData]="properties" (openModalType)="openParentModal($event)"></app-property-card>
+      </div>
+    </div>
+  </div>
+
+  <div class="social-wrapper">
+    <app-social></app-social>
+  </div>
+
+  <div class="footer-wrapper">
+    <app-footer></app-footer>
+  </div>
+</div>
+
+<ng-template #addEditPropertyModal>
+  <div class="modal-wrapper">
+    <div class="modal-heading">
+      <h1>{{ modalType === 'edit' ? 'Edit property' : 'Add property' }}</h1>
+    </div>
+
+    <div class="modal-body">
+      <form [formGroup]="addEditPropertyForm">
+        <div class="body-row">
+          <label>Title</label>
+          <div class="body-row-data">
+            <input type="text" name="name" placeholder="Property title" formControlName="name">
+            <div *ngIf="submittedForm && validateAddEditPropertyForm.name.errors" class="form-error">
+              <span *ngIf="validateAddEditPropertyForm.name.errors.required">* Required field</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="body-row">
+          <label>Location</label>
+          <div class="body-row-data">
+            <input type="text" name="location" placeholder="City/Region" formControlName="location">
+            <div *ngIf="submittedForm && validateAddEditPropertyForm.location.errors" class="form-error">
+              <span *ngIf="validateAddEditPropertyForm.location.errors.required">* Required field</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="body-row">
+          <label>Type</label>
+          <div class="body-row-data">
+            <select name="type" formControlName="type">
+              <option *ngFor="let propType of propertyType" [value]="propType">{{ propType }}</option>
+            </select>
+            <div *ngIf="submittedForm && validateAddEditPropertyForm.type.errors" class="form-error">
+              <span *ngIf="validateAddEditPropertyForm.type.errors.required">* Required field</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="body-row">
+          <label>Size</label>
+          <div class="body-row-data">
+            <div class="size-price-data-row">
+              <input type="number" name="size" placeholder="100" formControlName="size">
+              <span><strong>m<sup>2</sup></strong></span>
+            </div>
+
+            <div *ngIf="submittedForm && validateAddEditPropertyForm.size.errors" class="form-error">
+              <span *ngIf="validateAddEditPropertyForm.size.errors.required">* Required field</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="body-row">
+          <label>Price</label>
+          <div class="body-row-data">
+            <div class="size-price-data-row">
+              <input type="number" name="title" placeholder="500" formControlName="price">
+              <span><strong>€</strong></span>
+            </div>
+            <div *ngIf="submittedForm && validateAddEditPropertyForm.price.errors" class="form-error">
+              <span *ngIf="validateAddEditPropertyForm.price.errors.required">* Required field</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="body-row description-row">
+          <label>Description</label>
+          <div class="body-row-data">
+            <textarea name="description" placeholder="Describe your property" formControlName="description"></textarea>
+            <div *ngIf="submittedForm && validateAddEditPropertyForm.description.errors" class="form-error">
+              <span *ngIf="validateAddEditPropertyForm.description.errors.required">* Required field</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="body-row photos-row">
+          <label>Photos</label>
+
+          <div *ngIf="selectedPropertyData.imageUrl === null || modalType === 'add'" class="file-upload-wrapper">
+            <div *ngIf="!filesUploaded || uploadedFiles.length === 0 || fileUploadErrorMessage !== ''" class="file-upload-text">
+              <input class="file-upload-input" type="file" name="images" multiple="multiple" accept=".jpg, .jpeg, .png,.gif" formControlName="imageUrl" (change)="onFileUpload($event)">
+              Drag and drop or click to upload photos
+            </div>
+
+            <div *ngIf="filesUploaded && uploadedFiles.length !== 0 && fileUploadErrorMessage === ''" class="uploaded-file-names">
+              <p><span *ngFor="let file of uploadedFiles">{{ file.name }}&nbsp;<button (click)="removePhoto(file)"><mat-icon>close</mat-icon></button></span></p>
+            </div>
+
+            <div *ngIf="fileUploadErrorMessage !== ''">
+              <p class="error-message">{{ fileUploadErrorMessage }}</p>
+            </div>
+          </div>
+
+
+          <div *ngIf="selectedPropertyData.imageUrl !== null && modalType !== 'add'" class="uploaded-photos">
+            <div class="uploaded-photos-wrapper">
+
+              <!-- <div *ngFor="let file of selectedPropertyData.images?" class="image-icon-wrapper">-->
+              <div class="image-icon-wrapper">
+                <img src="assets/images/properties/{{ selectedPropertyData.imageUrl }}">
+                <!-- <button (click)="removePhoto(file)"><mat-icon>cancel</mat-icon></button>-->
+                <mat-icon>cancel</mat-icon>
+              </div>
+
+              <div class="image-icon-wrapper add-box">
+                <input class="file-upload-input" type="file" name="images" multiple="multiple" accept=".jpg, .jpeg, .png,.gif" formControlName="imageUrl" (change)="onFileUpload($event)">
+                <mat-icon>add_box</mat-icon>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </form>
+    </div>
+
+    <div class="modal-footer">
+      <button class="save-btn" (click)="submitAddEditProperty()">Save</button>
+      <button class="close-btn" (click)="close()">Close</button>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #deletePropertyModal>
+  <div class="modal-wrapper">
+    <div class="modal-heading">
+      <h1>Delete property</h1>
+    </div>
+
+    <div class="modal-body">
+      <div class="body-row delete-body-row">
+        <p>Are you sure you want to delete property <strong>{{ selectedPropertyData.name }}</strong>?</p>
+      </div>
+
+    </div>
+
+    <div class="modal-footer">
+      <button class="save-btn" (click)="deleteProperty()">Delete</button>
+      <button class="close-btn" (click)="close()">Close</button>
+    </div>
+  </div>
+</ng-template>

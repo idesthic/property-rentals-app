@@ -1,0 +1,277 @@
+@import '../../../../styles'
+
+.user-properties-wrapper
+  width: 100%
+  height: 100%
+  position: relative
+  z-index: 0
+  overflow-x: hidden
+  overflow-y: scroll
+  .background
+    width: 100%
+    height: 100%
+    background: url('../../../../assets/images/background-images/search-background.jpg')
+    background-size: cover
+    opacity: 0.2
+    position: fixed
+    z-index: 0
+  .user-properties-container
+    width: 82%
+    height: 80%
+    margin-left: 18%
+    padding-top: 2rem
+    padding-right: 1rem
+    position: relative
+    z-index: 1
+    @media (min-width: 600px)
+      margin-left: 10%
+      padding: 2rem 2rem 3rem 3rem
+    .add-property-btn-wrapper
+      width: 100%
+      padding-bottom: 3rem
+      button
+        float: right
+        background-color: $black
+        color: $white
+        font-size: 1em
+        padding: 0.5rem 1rem
+        border-radius: 5px
+        @include latoRegularFont
+        &:hover
+          background-color: $dark-grey
+    .property-cards-wrapper
+      display: flex
+      justify-content: center
+      padding-right: 0.5rem
+      margin-bottom: 5rem
+      .card
+        @include latoRegularFont
+        background: rgba(255, 255, 255, 255)
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37)
+        backdrop-filter: blur(4px)
+        -webkit-backdrop-filter: blur(4px)
+        border-radius: 10px
+        border: 1px solid rgba(255, 255, 255, 0.18)
+        position: relative
+        z-index: 2
+        margin: 2rem 0 1rem
+        padding: 0.5rem 1rem
+        width: 300px
+        @media (min-width: 450px)
+          width: 500px
+        @media (min-width: 600px)
+          width: 1230px
+          max-width: 1230px
+          padding: 1rem 3rem
+        h1
+          font-size: 1.5em
+          @include latoRegularFont
+          font-weight: bold
+          padding-top: 1rem
+          display: flex
+          align-items: center
+
+// Modals
+::ng-deep .cdk-global-overlay-wrapper
+  overflow-y: scroll
+
+::ng-deep .mat-dialog-container
+  margin: 1rem 0
+
+.modal-wrapper
+  overflow-x: hidden
+  @include latoRegularFont
+  .modal-heading h1
+    font-size: 1.3em
+    font-weight: bold
+
+  .modal-body
+    margin: 0
+    @media (min-width: 600px)
+      margin: 2rem 3rem
+    .body-row
+      display: flex
+      padding: 1rem 0 0
+      label
+        width: 30%
+        font-weight: bold
+      .body-row-data
+        display: flex
+        flex-direction: column
+        width: 70%
+        .form-error
+          color: $red
+          padding-top: 0.2rem
+        .size-price-data-row
+          display: flex
+        input, select, textarea
+          border: 1px solid $grey
+          border-radius: 5px
+          font-size: 1em
+          &:focus
+            outline: none
+            border: 1px solid #b3b3b3
+            box-shadow: 0 0 7px #b3b3b3
+        input, select
+          width: 60%
+        textarea
+          width: 100%
+          height: 8rem
+          overflow-x: hidden
+          resize: none
+      .file-upload-wrapper
+        width: 70%
+        height: 6rem
+        min-height: 8rem
+        overflow-y: scroll
+        .file-upload-text
+          display: flex
+          align-items: center
+          justify-content: center
+          padding: 0 2rem
+          width: 100%
+          height: inherit
+          border: dashed 2px $grey
+          color: $dark-grey
+          border-radius: 5px
+          position: relative
+          text-align: center
+          z-index: 2
+          &:hover
+            cursor: pointer
+          .file-upload-input
+            width: 100%
+            height: inherit
+            opacity: 0
+            position: absolute
+            z-index: 1
+            &:hover
+              cursor: pointer
+
+        .uploaded-file-names
+          display: flex
+          padding: 0.5rem 1rem
+          width: 100%
+          border: dashed 2px $grey
+          color: $dark-grey
+          border-radius: 5px
+          p
+            display: flex
+            flex-direction: column
+            span
+              display: flex
+              justify-content: space-between
+            mat-icon
+              transform: scale(0.8)
+              &:hover
+                cursor: pointer
+                background-color: $grey
+                color: white
+                border-radius: 5px
+
+
+    span
+      padding-left: 1rem
+
+    .photos-row
+      display: flex
+      align-items: flex-start
+      .uploaded-photos
+        width: fit-content
+        max-width: 70%
+        .uploaded-photos-wrapper
+          border: 1px solid $grey
+          border-radius: 5px
+          padding: 0.5rem
+          display: flex
+          flex-wrap: wrap
+          justify-content: space-evenly
+          .image-icon-wrapper
+            width: 80px
+            display: flex
+            justify-content: right
+            margin: 0.1rem
+            img
+              width: 80px
+              height: auto
+              position: relative
+              z-index: 3
+            mat-icon
+              position: absolute
+              z-index: 4
+              font-size: 1.2em
+              color: aliceblue
+              &:hover
+                cursor: pointer
+          .add-box
+            display: flex
+            justify-content: center
+            align-items: center
+            margin: 1rem 0
+            position: relative
+            z-index: 1
+            input
+              position: relative
+              z-index: 2
+              opacity: 0
+            mat-icon
+              color: $grey
+              font-size: 2em
+              display: flex
+              justify-content: center
+              align-items: center
+              position: absolute
+              z-index: 1
+
+    .delete-body-row
+      display: flex
+      justify-content: center
+      font-weight: 500
+
+    .description-row
+      display: flex
+      align-items: flex-start
+      word-break: break-all
+
+  .modal-footer
+    display: flex
+    justify-content: center
+    margin: 1rem 0
+    button
+      padding: 0.3rem 0.8rem
+      border-radius: 5px
+      color: white
+    .save-btn
+      margin-right: 1rem
+      color: $red
+      border: 1px solid #d9252b
+      &:hover
+        border: 1px solid #db7f83
+        color: #db7f83
+    .close-btn
+      color: $dark-grey
+      border: 1px solid $dark-grey
+      &:hover
+        border: 1px solid $grey
+        color: $grey
+
+.error-message
+  color: $red
+
+// Snackbar
+::ng-deep .success-snackbar
+  background-color: white
+  color: #62ce7f
+  text-align: center
+
+::ng-deep .error-snackbar
+  background-color: white
+  color: #d94444
+
+::ng-deep .mat-button-wrapper
+  color: black
+
+::ng-deep .mat-simple-snack-bar-content
+  width: 100%
+  display: flex
+  justify-content: center

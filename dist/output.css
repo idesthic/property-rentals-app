@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,900;1,400;1,600;1,900&display=swap') @tailwind base
+@tailwind components
+@tailwind utilities
+
+// Variables
+$white: #F1F1F1
+$grey: #C7C7C7
+$black: #1f1f1f
+
+// Mixins
+
+// Fonts
+@mixin playfairRegularFont
+  font-family: 'Playfair Display', serif
+  font-weight: 400
+
+@mixin playfairRegularItalicFont
+  font-family: 'Playfair Display', serif
+  font-weight: 400
+  font-style: italic
+
+@mixin playfairSemiBoldFont
+  font-family: 'Playfair Display', serif
+  font-weight: 600
+
+@mixin playfairSemiBoldItalicFont
+  font-family: 'Playfair Display', serif
+  font-weight: 600
+  font-style: italic
+
+@mixin playfairBoldFont
+  font-family: 'Playfair Display', serif
+  font-weight: 900
+
+@mixin playfairBoldItalicFont
+  font-family: 'Playfair Display', serif
+  font-weight: 900
+  font-style: italic
+
+html, body
+  margin: 0

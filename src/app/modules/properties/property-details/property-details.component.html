@@ -1,0 +1,96 @@
+<div class="wrapper property-details-wrapper">
+  <div class="background"></div>
+
+  <div class="navbar-wrapper">
+    <app-navbar></app-navbar>
+  </div>
+
+  <div class="property-details-container">
+
+    <div class="property-details-card-wrapper">
+      <div class="card">
+        <div class="property-card">
+          <div class="card-image-wrapper">
+            <img src="../assets/images/properties/{{ propertyDetails.imageUrl !== null ? propertyDetails.imageUrl : 'default-image.png'}}">
+          </div>
+
+          <div class="card-text-wrapper">
+            <div class="card-body">
+
+              <div class="card-body-top">
+
+                <div class="heading-body-left-wrapper">
+                  <div class="card-heading">
+                    <h2>{{ propertyDetails.name }}</h2>
+                    <h3><mat-icon>place</mat-icon>{{ propertyDetails.location }}</h3>
+                  </div>
+
+
+                  <div class="card-body-left">
+                    <div class="body-row">
+                      <label>Type:</label>
+                      <p>{{ propertyDetails.type }}</p>
+                    </div>
+
+                    <div class="body-row">
+                      <label>Size:</label>
+                      <p>{{ propertyDetails.size | number : '1.2-2' }} m<sup>2</sup></p>
+                    </div>
+
+                    <div class="body-row">
+                      <label>Property ID:</label>
+                      <p class="property-code">{{ propertyDetails.propertyCode }}</p>
+                    </div>
+
+                    <div class="body-row description-row">
+                      <label>Description:</label>
+                      <p class="description-text">{{ propertyDetails.description }}</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="heading-body-right-wrapper">
+                  <mat-icon class="favourite-icon">favorite</mat-icon>
+                  <!--<mat-icon>favorite_border</mat-icon>-->
+                </div>
+
+              </div>
+
+              <div class="card-body-right">
+                <div class="card-body-right-desktop">
+                  <mat-icon class="favourite-icon">favorite</mat-icon>
+                  <!--<mat-icon>favorite_border</mat-icon>-->
+                </div>
+
+                <div class="owner-details-wrapper">
+                  <div class="owner-details-container">
+                    <div class="owner-details-border top"></div>
+                      <label><span><strong>Owner name</strong></span></label>
+                    <!--  <label><span><strong>{{ propertyDetails.owner }}</>strong></span></label>-->
+                      <label>mail@email.com</label>
+                      <label>+013 344 968</label>
+                    <div class="owner-details-border bottom"></div>
+                  </div>
+                </div>
+
+                <p class="property-price">{{ propertyDetails.price }}&nbsp;€</p>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <div class="social-wrapper">
+    <app-social></app-social>
+  </div>
+
+  <div class="footer-wrapper">
+    <app-footer></app-footer>
+  </div>
+</div>
+

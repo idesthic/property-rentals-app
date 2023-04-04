@@ -1,0 +1,91 @@
+<div class="navbar-wrapper">
+  <app-navbar></app-navbar>
+</div>
+
+<div class="wrapper sign-in-wrapper">
+  <div class="card-wrapper">
+  <div class="card">
+    <div class="card-heading">
+      <h1>{{ route === 'sign-in' ? 'Sign in' : 'Register'}}</h1>
+    </div>
+
+    <div class="card-body">
+      <form [formGroup]="signInRegisterForm">
+        <div *ngIf="route === 'register'" class="body-row">
+          <label for="firstname">First name</label>
+          <input type="text" name="email" id="firstname" placeholder="First name" required>
+          <div *ngIf="submittedForm && validateSignInRegisterForm.firstName.errors" class="form-error">
+            <span *ngIf="validateSignInRegisterForm.firstName.errors.required">* Required field</span>
+          </div>
+        </div>
+
+        <div *ngIf="route === 'register'" class="body-row">
+          <label for="lastname">Last name</label>
+          <input type="text" name="email" id="lastname" placeholder="Last name" required>
+          <div *ngIf="submittedForm && validateSignInRegisterForm.lastName.errors" class="form-error">
+            <span *ngIf="validateSignInRegisterForm.lastName.errors.required">* Required field</span>
+          </div>
+        </div>
+
+        <div class="body-row">
+          <label for="email">Your email</label>
+          <input type="email" name="email" id="email" placeholder="name@email.com" required>
+          <div *ngIf="submittedForm && validateSignInRegisterForm.email.errors" class="form-error">
+            <span *ngIf="validateSignInRegisterForm.email.errors.required">* Required field</span>
+          </div>
+        </div>
+
+        <div class="body-row">
+          <label for="password">Your password</label>
+          <input type="password" name="password" id="password" placeholder="••••••••••" required>
+          <div *ngIf="submittedForm && validateSignInRegisterForm.password.errors" class="form-error">
+            <span *ngIf="validateSignInRegisterForm.password.errors.required">* Required field</span>
+          </div>
+        </div>
+
+        <div *ngIf="route === 'register'" class="body-row">
+          <label for="phone">Phone number</label>
+          <input type="text" name="password" id="phone" placeholder="+385 98 123 456" required>
+          <div *ngIf="submittedForm && validateSignInRegisterForm.phone.errors" class="form-error">
+            <span *ngIf="validateSignInRegisterForm.phone.errors.required">* Required field</span>
+          </div>
+        </div>
+
+        <div *ngIf="route === 'register'" class="body-row">
+          <label for="address">Address</label>
+          <input type="text" name="password" id="address" placeholder="Address" required>
+          <div *ngIf="submittedForm && validateSignInRegisterForm.address.errors" class="form-error">
+            <span *ngIf="validateSignInRegisterForm.address.errors.required">* Required field</span>
+          </div>
+        </div>
+
+        <div *ngIf="route === 'sign-in'" class="body-row remember-me-row">
+          <div>
+            <input id="remember" type="checkbox" value="" required>&nbsp;
+            <label for="remember">Remember me</label>
+          </div>
+          <a href="#">Forgot password?</a>
+        </div>
+       </form>
+    </div>
+
+    <div class="card-footer">
+      <button *ngIf="route === 'sign-in'" type="submit" (click)="submitSignInRegisterForm('sign-in')">Sign in</button>
+      <button *ngIf="route === 'register'" type="submit" (click)="submitSignInRegisterForm('register')">Register</button>
+
+      <div class="card-footer-links">
+        <div *ngIf="route === 'sign-in'">
+          Not registered?
+          <a href="/register">Create an account</a>
+        </div>
+
+        <div *ngIf="route === 'register'">
+          Already have an account?
+          <a href="/sign-in">Sign in</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  </div>
+</div>

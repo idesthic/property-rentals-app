@@ -1,0 +1,35 @@
+@import "../../../../styles"
+
+.footer-wrapper
+  position: fixed
+  width: 100%
+  display: flex
+  align-items: center
+  padding: 0.5rem 0
+  bottom: 0
+  background-color: $white
+  -webkit-box-shadow: 0px -1px 3px 0px rgba(0,0,0,0.13)
+  -moz-box-shadow: 0px -1px 3px 0px rgba(0,0,0,0.13)
+  box-shadow: 0px -1px 3px 0px rgba(0,0,0,0.13)
+  .logo-wrapper
+    width: 20%
+    display: flex
+    justify-content: center
+    @media (min-width: 600px)
+      width: 10%
+    img
+      max-width: 55px
+      height: auto
+  .footer-text
+    h1
+      @include playfairRegularFont
+      color: $black
+
+      font-size: 1.5em
+      margin-left: 0.5rem
+    p
+      font-size: 0.5em
+      @include playfairRegularFont
+      padding-left: 0.5rem
+
+

@@ -1,0 +1,44 @@
+<a *ngFor="let property of propertyData" href="/properties/details/{{ property.propertyCode }}" class="property-card">
+    <div class="card-image-wrapper">
+      <img src="assets/images/properties/{{ property.imageUrl !== null ? property.imageUrl : 'default-image.png'}}">
+    </div>
+
+    <div class="card-text-wrapper">
+      <div class="card-body">
+          <div class="heading-body-left-wrapper">
+            <div class="card-heading">
+              <h2>{{ property.name }}</h2>
+              <h3><mat-icon>place</mat-icon>{{ property.location }}</h3>
+            </div>
+
+
+            <div class="card-body-left">
+              <div class="body-row">
+                <label>Type:</label>
+                <p>{{ property.type }}</p>
+              </div>
+
+              <div class="body-row">
+                <label>Size:</label>
+                <p>{{ property.size | number : '1.2-2' }} m<sup>2</sup></p>
+              </div>
+
+              <div class="body-row property-code-row">
+                <label>Property ID:</label>
+                <p class="property-code">{{ property.propertyCode }}</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-body-right">
+            <mat-icon class="favourite-icon">favorite</mat-icon>
+            <!--<mat-icon>favorite_border</mat-icon>-->
+            <button *ngIf="userSignedIn && userProperties" class="edit-btn" (click)="openParentModal($event, 'addEditPropertyModal', property)">Edit</button>
+            <button *ngIf="userSignedIn && userProperties" class="delete-btn" (click)="openParentModal($event,'deletePropertyModal', property)">Delete</button>
+            <p class="property-price">{{ property.price }}&nbsp;€</p>
+          </div>
+
+      </div>
+    </div>
+
+</a>

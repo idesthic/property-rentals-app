@@ -1,0 +1,133 @@
+<div class="wrapper search-properties-wrapper">
+  <div class="background"></div>
+
+  <div class="navbar-wrapper">
+    <app-navbar></app-navbar>
+  </div>
+
+  <div class="search-property-container">
+
+    <!-- Desktop filters -->
+    <div class="filter-wrapper">
+      <div class="card filter-container">
+
+        <div class="filter-item-wrapper mobile-item-wrapper no-border">
+          <div class="filter-item mobile-item">
+            <button (click)="showMobileFilters = !showMobileFilters" [class]="showMobileFilters ? 'non-selected' : 'selected'">Filters</button>
+          </div>
+        </div>
+
+        <div class="filter-item-wrapper desktop-item-wrapper">
+          <div class="filter-item desktop-item">
+            <label>Type</label>
+            <select>
+              <option *ngFor="let type of propertyTypes">{{ type }}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="filter-item-wrapper desktop-item-wrapper">
+          <div class="filter-item desktop-item">
+            <label>Location</label>
+            <input type="text" placeholder="Location">
+          </div>
+        </div>
+
+        <div class="filter-item-wrapper desktop-item-wrapper">
+          <div class="filter-item desktop-item">
+            <label>Size</label>
+            <input type="text" placeholder="Size in m2">
+          </div>
+        </div>
+
+        <div class="filter-item-wrapper desktop-item-wrapper no-border">
+          <div class="filter-item desktop-item">
+            <label>Price</label>
+            <input type="text" placeholder="Price in €">
+          </div>
+        </div>
+
+        <div class="search-container">
+          <div class="search-wrapper">
+            <input type="search" placeholder="Search...">
+            <button type="submit">Search</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Mobile filters -->
+    <div *ngIf="showMobileFilters" class="mobile-filters">
+      <div class="card mobile-filter-container">
+
+        <div class="mobile-filter-item-wrapper">
+          <div class="mobile-filter-item">
+            <label>Type:</label>
+            <select>
+              <option *ngFor="let type of propertyTypes" class="selected">{{ type }}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="mobile-filter-item-wrapper">
+          <div class="mobile-filter-item">
+            <label>Location:</label>
+            <input type="text" placeholder="Location">
+          </div>
+        </div>
+
+        <div class="mobile-filter-item-wrapper">
+          <div class="mobile-filter-item">
+            <label>Size:</label>
+            <input type="number" placeholder="Size in m2">
+          </div>
+        </div>
+
+        <div class="mobile-filter-item-wrapper no-border">
+          <div class="mobile-filter-item">
+            <label>Price:</label>
+            <input type="number" placeholder="Price in €">
+          </div>
+        </div>
+
+        <div class="mobile-filter-item-wrapper">
+          <div class="mobile-filter-item search-button-wrapper">
+            <button>Search</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="property-cards-wrapper">
+      <div class="card">
+        <app-property-card [propertyData]="properties"></app-property-card>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="social-wrapper">
+    <app-social></app-social>
+  </div>
+
+  <div class="footer-wrapper">
+    <app-footer></app-footer>
+  </div>
+</div>
+
+
+
+<!--
+  <div class="filter-search-wrapper">
+    <div class="filter">Filter</div>
+    <div class="search">
+      <input type="text" placeholder="Search" (ngModelChange)="searchProperties(key.value)" #key="ngModel" ngModel
+             name="key" id="searchName" >
+    </div>
+  </div>
+-->
+
+
+

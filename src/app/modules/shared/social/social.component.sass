@@ -1,0 +1,25 @@
+@import "../../../../styles"
+
+.social-container
+  display: flex
+  flex-direction: column
+  align-items: center
+  padding: 0.7rem
+  // Glassmorphism
+  background: rgba(255, 255, 255, 0.25)
+  box-shadow: 0 3px 10px 0 rgba(31, 38, 135, 0.37)
+  backdrop-filter: blur(4px)
+  -webkit-backdrop-filter: blur(4px)
+  border-radius: 20px
+  border: 1px solid rgba(255, 255, 255, 0.18)
+  @media (min-width: 600px)
+    padding: 1rem
+  a
+    padding: 0.3rem 0
+    font-size: 1em
+    &:hover
+      color: $dark-grey
+      transform: scale(1.1)
+    @media (min-width: 600px)
+      padding: 1rem 0
+      font-size: 1.3em
